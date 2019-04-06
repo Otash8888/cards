@@ -5,3 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+cards = JSON.parse(File.read('app/assets/cards_json.js'))
+cards.each do |card|
+  Card.create(card)
+end
+#cards.each

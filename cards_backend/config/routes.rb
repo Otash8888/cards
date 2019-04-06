@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
 
   get '/players/:id', to: 'players#show'
-  #get '/players', to: 'players#index'
+  get '/decks', to: 'decks#index'
 
   namespace :api do
     namespace :v1 do
