@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2019_04_06_192953) do
 
   create_table "decks", force: :cascade do |t|
     t.integer "player_id"
-    t.string "cards_array", default: [], array: true
+    t.string "card_codes", default: [], array: true
     t.boolean "shuffled"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

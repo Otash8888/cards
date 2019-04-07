@@ -5,23 +5,23 @@ class Api::V1::DecksController < ApplicationController
     params[:deck_count] ? deck_count = params[:deck_count].to_i : deck_count = 1
     #creating and shuffling card codes based on passed values
     shuffled_card_codes = params[:cards] ? Card.card_codes_to_a(params[:cards]) : Card.shuffled_card_codes(deck_count)
-    @deck = Deck.create(cards_array: shuffled_card_codes, player_id: 1, shuffled: true)
+    @deck = Deck.create(card_codes: shuffled_card_codes, player_id: 1, shuffled: true)
 
     render json: {
                     deck_id: @deck.id,
                     shuffled: true,
-                    remaining: @deck.cards_array.count
+                    remaining: @deck.card_codes.count
                  }
   end
 
   def new_unshuffled
     card_codes = Card.card_codes
-    @deck = Deck.create(cards_array: card_codes, player_id: 1, shuffled: false, )
+    @deck = Deck.create(card_codes: card_codes, player_id: 1, shuffled: false, )
     render json: {
                     deck_id: @deck.id,
                     shuffled: @deck.shuffled,
-                    remaining: @deck.cards_array.count,
-                    test: @deck.cards_array
+                    remaining: @deck.card_codes.count,
+                    test: @deck.card_codes
                  }
   end
 
@@ -31,7 +31,7 @@ class Api::V1::DecksController < ApplicationController
     render json: {
                     cards: drawed_cards,
                     deck_id: @deck.id,
-                    remaining: @deck.cards_array.count
+                    remaining: @deck.card_codes.count
                  }
   end
 
@@ -41,7 +41,7 @@ class Api::V1::DecksController < ApplicationController
     render json: {
                     deck_id: @deck.id,
                     shuffled: @deck.shuffled,
-                    remaining: @deck.cards_array.count
+                    remaining: @deck.card_codes.count
                  }
   end
 
