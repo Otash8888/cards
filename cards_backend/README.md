@@ -1,24 +1,16 @@
-# README
+README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Cards Backend
 
-Things you may want to cover:
 
-* Ruby version
+------------- STEPS ------------
 
-* System dependencies
+1. Begin with running command - $ bundle install - to install all dependencies
 
-* Configuration
+2. Migrate the tables - $ rails db:migrate - 
 
-* Database creation
+3. Seed the database with 52 cards - $ rails db:seed -
 
-* Database initialization
+4. $ rails s - to start up the rails api server. Use port http://localhost:3000/
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+5. Launch the cards_frontend. The frontend makes use of backend hosted on port 3000. Change the frontend links as necessary.
