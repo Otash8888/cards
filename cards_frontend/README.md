@@ -1,7 +1,5 @@
 README
-Stock Trainer Backend
 
----------- DESCRIPTION ---------- Stock trainer is a realistic stock market training game that makes use of real time stock prices to allow users buy and sell with fake currency. Algorithm are employed to generate life like buy and sell feature based on stocks real time price, and volume.
 
 ------------- STEPS -------------
 
