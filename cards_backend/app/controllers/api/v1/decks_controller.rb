@@ -1,8 +1,10 @@
 class Api::V1::DecksController < ApplicationController
 
   def new_shuffle
+
     #if deck_count passed, we assign to the params value, otherwise assign to 1
     params[:deck_count] ? deck_count = params[:deck_count].to_i : deck_count = 1
+
     #creating and shuffling card codes based on passed values
     shuffled_card_codes = params[:cards] ? Card.card_codes_to_a(params[:cards]) : Card.shuffled_card_codes(deck_count)
     @deck = Deck.create(card_codes: shuffled_card_codes, player_id: 1, shuffled: true)
@@ -42,12 +44,6 @@ class Api::V1::DecksController < ApplicationController
                     shuffled: @deck.shuffled,
                     remaining: @deck.card_codes.count
                  }
-  end
-
-  private
-
-  def deck_params
-    params.permit(:player_id, :shuffled,)
   end
 
 end

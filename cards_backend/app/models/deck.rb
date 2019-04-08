@@ -1,5 +1,4 @@
 class Deck < ApplicationRecord
-  belongs_to :player
   
   def shuffle_cards
     shuffled_array = self.card_codes.shuffle

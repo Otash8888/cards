@@ -2,15 +2,10 @@ import React from "react";
 import DrawedCard from "../components/DrawedCard";
 
 class CardCollection extends React.Component {
-  
-  state={
-    clicked:false
-  }
-
   render(){
     let { drawedCards } = this.props
-
     let arrOfCards
+
     if (drawedCards) {
       arrOfCards = drawedCards.map((card) => {
         return <DrawedCard card = {card} key={card.id}/>
@@ -18,14 +13,11 @@ class CardCollection extends React.Component {
     }
 
     return (
-  	  <div className="ui five column grid">
-    		<div className="row">
-          {arrOfCards}
-        </div>
-  	  </div>
-  	);
+      <section class="cards">
+        {arrOfCards}
+      </section>
+  	)
   }
-
-};
+}
 
 export default CardCollection;

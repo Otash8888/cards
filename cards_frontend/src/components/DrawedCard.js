@@ -1,41 +1,174 @@
 import React from "react";
+import { Button } from 'semantic-ui-react'
 
 const DrawedCard = props => {
-
   const { card } = props;
+  let suitType = card.suit.toLowerCase()
+  let value
+  let suitDesign
 
-  let suitType;
+  if (parseInt(card.value)) {
+    value = card.value
+  }else {
+    value = (card.value)[0]
+  }
 
-  switch (card.suit) {
-    case "HEARTS":
-      suitType =
-      <i className="icon military" />;
+  switch (value) {
+    case "2":
+      suitDesign =
+      <div class="card__inner card__inner--centered">
+        <div class="card__column">
+          <div class="card__symbol"></div>
+          <div class="card__symbol"></div>
+        </div>
+      </div>
       break;
-    case "SPADES":
-      suitType = <i className="icon" src='../card_icons/spades_icon.svg' />;
+    case "3":
+      suitDesign =
+      <div class="card__inner card__inner--centered">
+  			<div class="card__column">
+  				<div class="card__symbol"></div>
+  				<div class="card__symbol"></div>
+  				<div class="card__symbol"></div>
+  			</div>
+  		</div>
       break;
-    case "DIAMONDS":
-      suitType = <i className="icon shield" />;
+    case "4":
+      suitDesign =
+      <div class="card__inner">
+  			<div class="card__column">
+  				<div class="card__symbol"></div>
+  				<div class="card__symbol"></div>
+  			</div>
+  			<div class="card__column">
+  				<div class="card__symbol"></div>
+  				<div class="card__symbol"></div>
+  			</div>
+		  </div>
       break;
-    case "CLUBS":
-      suitType = <i className="icon ambulance" />;
+    case "5":
+      suitDesign =
+      <div class="card__inner">
+  			<div class="card__column">
+  				<div class="card__symbol"></div>
+  				<div class="card__symbol"></div>
+  			</div>
+  			<div class="card__column card__column--centered">
+  				<div class="card__symbol"></div>
+  			</div>
+  			<div class="card__column">
+  				<div class="card__symbol"></div>
+  				<div class="card__symbol"></div>
+  			</div>
+  		</div>
+      break;
+    case "6":
+      suitDesign =
+      <div class="card__inner">
+  			<div class="card__column">
+  				<div class="card__symbol"></div>
+  				<div class="card__symbol"></div>
+  				<div class="card__symbol"></div>
+  			</div>
+  			<div class="card__column">
+  				<div class="card__symbol"></div>
+  				<div class="card__symbol"></div>
+  				<div class="card__symbol"></div>
+  			</div>
+  		</div>
+      break;
+    case "7":
+      suitDesign =
+      <div class="card__inner">
+  			<div class="card__column">
+  				<div class="card__symbol"></div>
+  				<div class="card__symbol"></div>
+  				<div class="card__symbol"></div>
+  			</div>
+  			<div class="card__column card__column--centered">
+  				<div class="card__symbol card__symbol--huge"></div>
+  			</div>
+  			<div class="card__column">
+  				<div class="card__symbol"></div>
+  				<div class="card__symbol"></div>
+  				<div class="card__symbol"></div>
+  			</div>
+  		</div>
+      break;
+    case "8":
+      suitDesign =
+      <div class="card__inner">
+  			<div class="card__column">
+  				<div class="card__symbol"></div>
+  				<div class="card__symbol"></div>
+  				<div class="card__symbol"></div>
+  			</div>
+  			<div class="card__column card__column--centered">
+  				<div class="card__symbol card__symbol--big"></div>
+  				<div class="card__symbol card__symbol--big"></div>
+  			</div>
+  			<div class="card__column">
+  				<div class="card__symbol"></div>
+  				<div class="card__symbol"></div>
+  				<div class="card__symbol"></div>
+  			</div>
+  		</div>
+      break;
+    case "9":
+      suitDesign =
+      <div class="card__inner">
+  			<div class="card__column">
+  				<div class="card__symbol"></div>
+  				<div class="card__symbol"></div>
+  				<div class="card__symbol card__symbol--rotated"></div>
+  				<div class="card__symbol"></div>
+  			</div>
+  			<div class="card__column card__column--centered">
+  				<div class="card__symbol card__symbol"></div>
+  			</div>
+  			<div class="card__column">
+  				<div class="card__symbol"></div>
+  				<div class="card__symbol"></div>
+  				<div class="card__symbol card__symbol--rotated"></div>
+  				<div class="card__symbol"></div>
+  			</div>
+  		</div>
+      break;
+    case "10":
+      suitDesign =
+      <div class="card__inner">
+  			<div class="card__column">
+  				<div class="card__symbol"></div>
+  				<div class="card__symbol"></div>
+  				<div class="card__symbol card__symbol--rotated"></div>
+  				<div class="card__symbol"></div>
+  			</div>
+  			<div class="card__column card__column--centered">
+  				<div class="card__symbol card__symbol--big"></div>
+  				<div class="card__symbol card__symbol--big"></div>
+  			</div>
+  			<div class="card__column">
+  				<div class="card__symbol"></div>
+  				<div class="card__symbol"></div>
+  				<div class="card__symbol card__symbol--rotated"></div>
+  				<div class="card__symbol"></div>
+  			</div>
+  		</div>
       break;
     default:
-      suitType = <div />;
+      suitDesign =
+      <div class="card__inner card__inner--centered">
+        <div class="card__column card__column--centered">
+  				<div class="card__symbol card__symbol"></div>
+  			</div>
+      </div>
   }
 
   return (
-    <div className="ui column" >
-      <div className="ui card" key={card.id}>
-        <div className="header">
-          {card.value} {card.suit} {suitType}
-        </div>
+    <section class={`card card--${suitType}`} value={value}>
+  		{suitDesign}
+	  </section>
+  )
+}
 
-
-      </div>
-    </div>
-  );
-
-};
-
-export default DrawedCard;
+export default DrawedCard

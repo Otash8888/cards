@@ -8,11 +8,6 @@ Rails.application.routes.draw do
       get '/deck/:id/draw', to: 'decks#draw'
       get '/deck/:id/shuffle', to: 'decks#reshuffle'
 
-
-
-      resources :players, only: [:index, :show, :create]
-      resources :decks
-
     end
   end
 end

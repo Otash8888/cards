@@ -1,15 +1,14 @@
 import React from "react";
+import { Button } from 'semantic-ui-react'
 
 const NewUnshuffledDeck = props => {
-
   return (
-    <div >
-      <button onClick = {e => props.handleNewUnshuffledDeck()} class="massive ui button">
+    <div className="column">
+      <Button className="fluid ui teal button" onClick = {e => props.handleNewUnshuffledDeck()}>
         New Unshuffled Deck
-      </button>
+      </Button>
     </div>
-  );
-
-};
+  )
+}
 
 export default NewUnshuffledDeck;

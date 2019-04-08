@@ -4,6 +4,7 @@ import DrawCard from "../components/DrawCard";
 import NewUnshuffledDeck from "../components/NewUnshuffledDeck"
 import ShuffleCurrentDeck from "../components/ShuffleCurrentDeck"
 import NewShuffledDeck from "../components/NewShuffledDeck"
+import CurrentDeckInfo from "../components/CurrentDeckInfo"
 
 let buttonDisabled
 
@@ -28,13 +29,13 @@ class CardsPage extends React.Component {
       let { deck_id } = resp
       let { shuffled } = resp
       let { remaining } = resp
+
       this.setState({
+                    drawedCards:[],
                     deck_id,
                     shuffled,
                     remaining,
-                    },() => {
-        console.log(this.state);
-      })
+                    })
     })
   }
 
@@ -45,7 +46,7 @@ class CardsPage extends React.Component {
     } else {
       newShuffledDeckUrl = 'http://localhost:3000/api/v1/deck/new/shuffle'
     }
-    console.log(deck_count)
+
     fetch(newShuffledDeckUrl)
     .then(r=>r.json())
     .then((resp) => {
@@ -53,12 +54,11 @@ class CardsPage extends React.Component {
       let { shuffled } = resp
       let { remaining } = resp
       this.setState({
+                    drawedCards:[],
                     deck_id,
                     shuffled,
                     remaining,
-                    },() => {
-        console.log(this.state);
-      })
+                    })
     })
   }
 
@@ -74,9 +74,7 @@ class CardsPage extends React.Component {
                     drawedCards: cards,
                     deck_id,
                     remaining,
-                    },() => {
-        console.log(this.state);
-      })
+                    })
     })
   }
 
@@ -91,17 +89,9 @@ class CardsPage extends React.Component {
                     deck_id,
                     shuffled,
                     remaining,
-                    },() => {
-        console.log(this.state);
-      })
+                    })
     })
   }
-
-
-
-
-
-
 
   render() {
 
@@ -110,18 +100,19 @@ class CardsPage extends React.Component {
     }else {
       buttonDisabled = false
     }
+
     return (
-      <div>
-
-        <div className="Row">
+      <div >
+        <div className="ui four column centered grid">
+          {this.state.deck_id ? <CurrentDeckInfo state = {this.state }/> : null}
           <NewShuffledDeck handleNewShuffledDeck = {this.handleNewShuffledDeck }/>
-
-          <NewUnshuffledDeck handleNewUnshuffledDeck = {this.handleNewUnshuffledDeck }/>
-          <ShuffleCurrentDeck handleShuffleCurrentDeck = {this.handleShuffleCurrentDeck } buttonDisabled = {buttonDisabled}/>
-          <DrawCard handleDraw = {this.handleDraw} buttonDisabled = {buttonDisabled}/>
+          <div class="four column centered row">
+            <NewUnshuffledDeck handleNewUnshuffledDeck = {this.handleNewUnshuffledDeck }/>
+            <ShuffleCurrentDeck handleShuffleCurrentDeck = {this.handleShuffleCurrentDeck } buttonDisabled = {buttonDisabled}/>
+            <DrawCard handleDraw = {this.handleDraw} buttonDisabled = {buttonDisabled}/>
+          </div>
         </div>
-          <CardCollection drawedCards={this.state.drawedCards}
-        />
+          <CardCollection drawedCards={this.state.drawedCards}/>
       </div>
     );
   }

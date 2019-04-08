@@ -1,5 +1,5 @@
 import React from "react";
-import { Form } from 'semantic-ui-react'
+import { Form, Button } from 'semantic-ui-react'
 
 class NewShuffledDeck extends React.Component {
   state = { deck_count: '' }
@@ -8,22 +8,22 @@ class NewShuffledDeck extends React.Component {
 
   handleSubmit = () => {
     this.props.handleNewShuffledDeck(parseInt(this.state.deck_count))
-
     this.setState({ deck_count: '' })
   }
+
   render() {
     const { deck_count } = this.state
-  return (
-    < div >
-    <Form onSubmit={this.handleSubmit}>
-        <Form.Group>
-          <Form.Input placeholder='Enter deck number' name='deck_count' value={deck_count} onChange={this.handleChange} type="number" />
-          <Form.Button content='Create Shuffled Deck' />
-        </Form.Group>
-      </Form>
-    </div >
-  );
+    return (
+      <div className="column">
+        <Form onSubmit={this.handleSubmit}>
+          <Form.Group widths='equal'>
+            <Form.Input placeholder='Enter number of decks' name='deck_count' value={deck_count} onChange={this.handleChange} type="number" />
+            <Button type='submit' className="ui teal button">Create Deck </Button>
+          </Form.Group>
+        </Form>
+      </div >
+    )
   }
-};
+}
 
-export default NewShuffledDeck;
+export default NewShuffledDeck

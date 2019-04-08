@@ -11,4 +11,5 @@ class Card < ApplicationRecord
   def self.card_codes_to_a(codes)
     codes.split(",")
   end
+  
 end
