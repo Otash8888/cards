@@ -15,13 +15,12 @@ class Api::V1::DecksController < ApplicationController
   end
 
   def new_unshuffled
-    card_codes = Card.card_codes
+    card_codes = Card.unshuffled_card_codes
     @deck = Deck.create(card_codes: card_codes, player_id: 1, shuffled: false, )
     render json: {
                     deck_id: @deck.id,
                     shuffled: @deck.shuffled,
-                    remaining: @deck.card_codes.count,
-                    test: @deck.card_codes
+                    remaining: @deck.card_codes.count
                  }
   end
 
