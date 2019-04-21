@@ -37,7 +37,8 @@ class Api::V1::DecksController < ApplicationController
                     remaining: @deck.card_codes.count
                  }
   end
-
+  
+  #reshuffle a given deck
   def reshuffle
     @deck = Deck.find(params[:id])
     @deck.shuffle_cards
