@@ -27,6 +27,7 @@ class Api::V1::DecksController < ApplicationController
                  }
   end
 
+  #draw five cards from a given deck
   def draw
     @deck = Deck.find(params[:id])
     drawed_cards = @deck.draw_five_cards
