@@ -1,5 +1,5 @@
 class Api::V1::DecksController < ApplicationController
-
+  #create a new shuffled deck
   def new_shuffle
 
     #if deck_count passed, we assign to the params value, otherwise assign to 1
@@ -15,7 +15,8 @@ class Api::V1::DecksController < ApplicationController
                     remaining: @deck.card_codes.count
                  }
   end
-
+  
+  #
   def new_unshuffled
     card_codes = Card.unshuffled_card_codes
     @deck = Deck.create(card_codes: card_codes, player_id: 1, shuffled: false, )
