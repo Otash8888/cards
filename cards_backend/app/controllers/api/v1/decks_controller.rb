@@ -16,7 +16,7 @@ class Api::V1::DecksController < ApplicationController
                  }
   end
   
-  #
+  #create a new not shuffled deck
   def new_unshuffled
     card_codes = Card.unshuffled_card_codes
     @deck = Deck.create(card_codes: card_codes, player_id: 1, shuffled: false, )
